@@ -1,0 +1,116 @@
+Gesamtbild: Was baut auf was auf
+Aufgabe a)                    Aufgabe b)
+                              
+OPD (Text)                    BPMN-Modell
+    │                              │
+    │           ┌──────────────────┤
+    │           ▼                  ▼
+    │     M2T-Transformation    (b.1)
+    │     ├─ Template-based         
+    │     └─ LLM-based          
+    │           │
+    │           ▼
+    │     Generated Process
+    │     Description (GPD)
+    │           │
+    ├───────────┤  ◄── T2T Similarity (b.2)
+    ▼           ▼
+  Preprocessing (GEMEINSAM)
+  Similarity Matrix (GEMEINSAM)
+  Matching (GEMEINSAM)
+  Metrics (GEMEINSAM)
+    │           │
+    ▼           ▼
+  M2T-Metrics  T2T-Metrics
+  (a)          (b.2)
+
+
+Projektstruktur
+│
+├── core/                        ← GEMEINSAME BAUSTEINE (a + b)
+│   ├── __init__.py
+│   ├── preprocessing.py         # Satz-Splitting, Task-Extraktion
+│   ├── similarity.py            # Levenshtein, TF-IDF, WordNet, Embeddings
+│   ├── matching.py              # 1-to-1, N-to-1 (Hungarian)
+│   └── metrics.py               # Precision, Recall, F1, SMST, SQST
+│
+├── m2t/              ← AUFGABE a)
+│   ├── __init__.py
+│   └── pipeline.py              # OPD vs. GPM-Tasks → Metrics
+│
+├── transformation/              ← AUFGABE b.1)
+│   ├── __init__.py
+│   ├── template_based.py        # Deterministisch: Template/Visitor
+│   └── llm_based.py             # LLM-basiert (Anthropic API)
+│
+├── t2t/              ← AUFGABE b.2)
+│   ├── __init__.py
+│   └── pipeline.py              # OPD vs. GPD → SMST + SQST
+│
+├── data/
+│   ├── texts/
+│   │   └── process_description.txt
+│   └── models/
+│       ├── model_gpt4o.json
+│       ├── model_gemini.json
+│       └── model_claude.json
+│
+├── main_a.py                    # CLI-Einstieg für Aufgabe a
+├── main_b1.py                   # CLI-Einstieg für Aufgabe b.1
+├── main_b2.py                   # CLI-Einstieg für Aufgabe b.2
+├── requirements.txt
+└── README.md
+
+Was core/ leistet und wie es wiederverwendet wird
+
+core/preprocessing.py — wird von a, b.2 genutzt:
+    def split_into_sentences(text: str) -> list[str]: ...
+    def extract_tasks_from_model(model: dict) -> list[str]: ...
+    def extract_tasks_with_gateways(model: dict) -> list[dict]: ...
+    # gibt z.B. {"label": "go to shop", "type": "task"} zurück
+
+core/similarity.py — wird von a, b.2 genutzt:
+    def levenshtein_sim(s1, s2) -> float: ...
+    def tfidf_sim(s1, s2) -> float: ...
+    def wordnet_sim(s1, s2) -> float: ...
+    def embedding_sim(s1, s2) -> float: ...   # semantisch
+    def sentence_pair_sim(s1, s2) -> float: ...  # für Tuples (b.2 SQST)
+
+core/matching.py — wird von a, b.2 genutzt:
+    def build_similarity_matrix(list_a, list_b, sim_fn) -> np.ndarray: ...
+    def match_one_to_one(matrix) -> list[tuple]: ...   # Hungarian
+    def match_n_to_one(matrix) -> list[tuple]: ...
+    def apply_threshold(matches, matrix, threshold) -> list[tuple]: ...
+
+core/metrics.py — wird von a, b.2 genutzt:
+    def precision(matched_tasks, total_tasks) -> float: ...
+    def recall(matched_sentences, total_sentences) -> float: ...
+    def f1(p, r) -> float: ...
+    def smst(text1_sentences, text2_sentences, sim_fn) -> float: ...  # b.2 Technik 1
+    def sqst(text1_sentences, text2_sentences, sim_fn) -> float: ...  # b.2 Technik 2 (Tuples)
+
+b.1: Die zwei Transformationstechniken
+    Template-based (deterministisch) folgt dem Muster aus Folie 20:
+    # Traversiert flows in topologischer Reihenfolge
+    # und füllt Templates:
+    TEMPLATES = {
+      "task":      "Then, {label} is performed.",
+      "exclusive": "An exclusive decision occurs: {condition}.",
+      "parallel":  "The following steps occur in parallel: {branches}.",
+      "loop":      "The process loops back to {target} if {condition}.",
+      "start":     "The process begins.",
+      "end":       "Finally, the process ends."
+    }
+
+    LLM-based gibt das JSON-Modell an die API und bekommt Fließtext zurück.
+
+b.2: Die zwei T2T-Techniken
+    Technik 1 — SMST (rein semantisch, Satz-gegen-Satz): nutzt core/matching.py + core/similarity.py — identisch zu Aufgabe a, nur beide Seiten sind jetzt Texte statt Text+Tasks.
+    Technik 2 — SQST (mit zusätzlicher Dimension: Sequenz/Tuples, Folie 25): vergleicht nicht einzelne Sätze (si vs. gj), sondern aufeinanderfolgende Satz-Paare (si, si+1) vs. (gj, gj+1). Dafür:
+    pythondef make_tuples(sentences):
+        return [(sentences[i], sentences[i+1]) 
+                for i in range(len(sentences)-1)]
+
+    def tuple_sim(t1, t2, sim_fn):
+        # Kombiniert similarity beider Satzpaare
+        return (sim_fn(t1[0], t2[0]) + sim_fn(t1[1], t2[1])) / 2
