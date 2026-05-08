@@ -1,0 +1,179 @@
+<testset xmlns="http://cpee.org/ns/properties/2.0">
+  <executionhandler>ruby</executionhandler>
+  <dataelements/>
+  <endpoints>
+    <user>https-post://cpee.org/services/timeout-user.php</user>
+    <auto>https-post://cpee.org/services/timeout-auto.php</auto>
+    <subprocess>https-post://cpee.org/flow/start/url/</subprocess>
+    <timeout>https-post://cpee.org/services/timeout.php</timeout>
+    <send>https-post://cpee.org/ing/correlators/message/send/</send>
+    <receive>https-get://cpee.org/ing/correlators/message/receive/</receive>
+  </endpoints>
+  <attributes>
+    <info>Plain Instance</info>
+    <modeltype>ChatGPT_Mermaid</modeltype>
+    <theme>preset</theme>
+  </attributes>
+  <description>flowchart TD
+0:startevent:((startevent)) --&gt; 1:task:(Receive customer requirements with at least 5 properties)
+1:task:(Receive customer requirements with at least 5 properties) --&gt; 2:parallelgateway:{AND}
+2:parallelgateway:{AND} --&gt; 3:task:(Order guide bar based on required length)
+2:parallelgateway:{AND} --&gt; 4:task:(Order chain based on required width)
+2:parallelgateway:{AND} --&gt; 5:task:(Order motor or electric drive components)
+2:parallelgateway:{AND} --&gt; 6:task:(Order housing components)
+2:parallelgateway:{AND} --&gt; 7:task:(Order safety and control components)
+3:task:(Order guide bar based on required length) --&gt; 8:parallelgateway:{AND}
+4:task:(Order chain based on required width) --&gt; 8:parallelgateway:{AND}
+5:task:(Order motor or electric drive components) --&gt; 8:parallelgateway:{AND}
+6:task:(Order housing components) --&gt; 8:parallelgateway:{AND}
+7:task:(Order safety and control components) --&gt; 8:parallelgateway:{AND}
+8:parallelgateway:{AND} --&gt; 9:task:(Receive all parts)
+9:task:(Receive all parts) --&gt; 10:task:(Inspect all parts manually)
+10:task:(Inspect all parts manually) --&gt; 11:task:(Send first status update to customer)
+11:task:(Send first status update to customer) --&gt; 12:task:(Assemble first chainsaw)
+12:task:(Assemble first chainsaw) --&gt; 13:task:(Send second status update to customer)
+13:task:(Send second status update to customer) --&gt; 14:task:(Ship first chainsaw to customer)
+14:task:(Ship first chainsaw to customer) --&gt; 15:task:(Collect customer feedback)
+15:task:(Collect customer feedback) --&gt; 16:exclusivegateway:{x}
+16:exclusivegateway:{x} --&gt; |Customer likes it| 17:task:(Produce remaining chainsaws)
+16:exclusivegateway:{x} --&gt; |Customer does not like it| 18:endevent:(((endevent)))
+17:task:(Produce remaining chainsaws) --&gt; 19:endevent:(((endevent)))
+    <description xmlns="http://cpee.org/ns/description/1.0"
+      xmlns:a="http://cpee.org/ns/annotation/1.0">
+      <call id="a1" endpoint="" a:alt_id="1">
+        <parameters>
+          <label>Receive customer requirements with at least 5 properties</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <parallel wait="-1" cancel="last" a:alt_id="2">
+        <parallel_branch>
+          <call id="a5" endpoint="" a:alt_id="3">
+            <parameters>
+              <label>Order guide bar based on required length</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+        </parallel_branch>
+        <parallel_branch>
+          <call id="a7" endpoint="" a:alt_id="4">
+            <parameters>
+              <label>Order chain based on required width</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+        </parallel_branch>
+        <parallel_branch>
+          <call id="a9" endpoint="" a:alt_id="5">
+            <parameters>
+              <label>Order motor or electric drive components</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+        </parallel_branch>
+        <parallel_branch>
+          <call id="a11" endpoint="" a:alt_id="6">
+            <parameters>
+              <label>Order housing components</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+        </parallel_branch>
+        <parallel_branch>
+          <call id="a13" endpoint="" a:alt_id="7">
+            <parameters>
+              <label>Order safety and control components</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+        </parallel_branch>
+      </parallel>
+      <call id="a25" endpoint="" a:alt_id="9">
+        <parameters>
+          <label>Receive all parts</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <call id="a27" endpoint="" a:alt_id="10">
+        <parameters>
+          <label>Inspect all parts manually</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <call id="a29" endpoint="" a:alt_id="11">
+        <parameters>
+          <label>Send first status update to customer</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <call id="a31" endpoint="" a:alt_id="12">
+        <parameters>
+          <label>Assemble first chainsaw</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <call id="a33" endpoint="" a:alt_id="13">
+        <parameters>
+          <label>Send second status update to customer</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <call id="a35" endpoint="" a:alt_id="14">
+        <parameters>
+          <label>Ship first chainsaw to customer</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <call id="a37" endpoint="" a:alt_id="15">
+        <parameters>
+          <label>Collect customer feedback</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <choose mode="exclusive" a:alt_id="16">
+        <alternative condition="Customer likes it" language="text/javascript">
+          <call id="a41" endpoint="" a:alt_id="17">
+            <parameters>
+              <label>Produce remaining chainsaws</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+        </alternative>
+        <alternative condition="Customer does not like it" language="text/javascript"/>
+      </choose>
+    </description>
+  </description>
+  <transformation>
+    <description type="copy"/>
+    <dataelements type="none"/>
+    <endpoints type="none"/>
+  </transformation>
+</testset>

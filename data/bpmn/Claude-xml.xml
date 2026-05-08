@@ -1,0 +1,188 @@
+<testset xmlns="http://cpee.org/ns/properties/2.0">
+  <executionhandler>ruby</executionhandler>
+  <dataelements/>
+  <endpoints>
+    <user>https-post://cpee.org/services/timeout-user.php</user>
+    <auto>https-post://cpee.org/services/timeout-auto.php</auto>
+    <subprocess>https-post://cpee.org/flow/start/url/</subprocess>
+    <timeout>https-post://cpee.org/services/timeout.php</timeout>
+    <send>https-post://cpee.org/ing/correlators/message/send/</send>
+    <receive>https-get://cpee.org/ing/correlators/message/receive/</receive>
+  </endpoints>
+  <attributes>
+    <info>Plain Instance</info>
+    <modeltype>ChatGPT_Mermaid</modeltype>
+    <theme>preset</theme>
+  </attributes>
+  <description>flowchart TD
+0:startevent:((startevent)) --&gt; 1:task:(Kundeneigenschaften aufnehmen Schwertlaenge Kettenbreite Antriebsart Leistung Gewicht)
+1:task:(Kundeneigenschaften aufnehmen Schwertlaenge Kettenbreite Antriebsart Leistung Gewicht) --&gt; 2:parallelgateway:{AND}
+2:parallelgateway:{AND} --&gt; 3:task:(Fuehrungsschiene bestellen)
+2:parallelgateway:{AND} --&gt; 4:task:(Saegekette bestellen)
+2:parallelgateway:{AND} --&gt; 5:task:(Motor oder Elektroantrieb bestellen)
+2:parallelgateway:{AND} --&gt; 6:task:(Gehaeuse bestellen)
+2:parallelgateway:{AND} --&gt; 7:task:(Sicherheitsbauteile bestellen)
+3:task:(Fuehrungsschiene bestellen) --&gt; 8:parallelgateway:{AND}
+4:task:(Saegekette bestellen) --&gt; 8:parallelgateway:{AND}
+5:task:(Motor oder Elektroantrieb bestellen) --&gt; 8:parallelgateway:{AND}
+6:task:(Gehaeuse bestellen) --&gt; 8:parallelgateway:{AND}
+7:task:(Sicherheitsbauteile bestellen) --&gt; 8:parallelgateway:{AND}
+8:parallelgateway:{AND} --&gt; 9:task:(Alle Teile manuell pruefen)
+9:task:(Alle Teile manuell pruefen) --&gt; 10:task:(Produktionsupdate an Kunden senden)
+10:task:(Produktionsupdate an Kunden senden) --&gt; 11:task:(Teile montieren)
+11:task:(Teile montieren) --&gt; 12:task:(Produktionsupdate an Kunden senden)
+12:task:(Produktionsupdate an Kunden senden) --&gt; 13:task:(Erste Saege an Kunden versenden)
+13:task:(Erste Saege an Kunden versenden) --&gt; 14:task:(Kundenfeedback einholen)
+14:task:(Kundenfeedback einholen) --&gt; 15:exclusivegateway:{x}
+15:exclusivegateway:{x} --&gt; |Kunde zufrieden|16:task:(Restbestellung produzieren)
+15:exclusivegateway:{x} --&gt; |Kunde nicht zufrieden|17:endevent:(((endevent)))
+16:task:(Restbestellung produzieren) --&gt; 18:task:(Produktionsupdate an Kunden senden)
+18:task:(Produktionsupdate an Kunden senden) --&gt; 19:task:(Restbestellung an Kunden versenden)
+19:task:(Restbestellung an Kunden versenden) --&gt; 20:endevent:(((endevent)))
+    <description xmlns="http://cpee.org/ns/description/1.0"
+      xmlns:a="http://cpee.org/ns/annotation/1.0">
+      <call id="a1" endpoint="" a:alt_id="1">
+        <parameters>
+          <label>Kundeneigenschaften aufnehmen Schwertlaenge Kettenbreite Antriebsart Leistung Gewicht</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <parallel wait="-1" cancel="last" a:alt_id="2">
+        <parallel_branch>
+          <call id="a5" endpoint="" a:alt_id="3">
+            <parameters>
+              <label>Fuehrungsschiene bestellen</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+        </parallel_branch>
+        <parallel_branch>
+          <call id="a7" endpoint="" a:alt_id="4">
+            <parameters>
+              <label>Saegekette bestellen</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+        </parallel_branch>
+        <parallel_branch>
+          <call id="a9" endpoint="" a:alt_id="5">
+            <parameters>
+              <label>Motor oder Elektroantrieb bestellen</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+        </parallel_branch>
+        <parallel_branch>
+          <call id="a11" endpoint="" a:alt_id="6">
+            <parameters>
+              <label>Gehaeuse bestellen</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+        </parallel_branch>
+        <parallel_branch>
+          <call id="a13" endpoint="" a:alt_id="7">
+            <parameters>
+              <label>Sicherheitsbauteile bestellen</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+        </parallel_branch>
+      </parallel>
+      <call id="a25" endpoint="" a:alt_id="9">
+        <parameters>
+          <label>Alle Teile manuell pruefen</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <call id="a27" endpoint="" a:alt_id="10">
+        <parameters>
+          <label>Produktionsupdate an Kunden senden</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <call id="a29" endpoint="" a:alt_id="11">
+        <parameters>
+          <label>Teile montieren</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <call id="a31" endpoint="" a:alt_id="12">
+        <parameters>
+          <label>Produktionsupdate an Kunden senden</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <call id="a33" endpoint="" a:alt_id="13">
+        <parameters>
+          <label>Erste Saege an Kunden versenden</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <call id="a35" endpoint="" a:alt_id="14">
+        <parameters>
+          <label>Kundenfeedback einholen</label>
+          <method/>
+          <type>:task</type>
+          <arguments/>
+        </parameters>
+      </call>
+      <choose mode="exclusive" a:alt_id="15">
+        <alternative condition="Kunde zufrieden" language="text/javascript">
+          <call id="a39" endpoint="" a:alt_id="16">
+            <parameters>
+              <label>Restbestellung produzieren</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+          <call id="a43" endpoint="" a:alt_id="18">
+            <parameters>
+              <label>Produktionsupdate an Kunden senden</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+          <call id="a45" endpoint="" a:alt_id="19">
+            <parameters>
+              <label>Restbestellung an Kunden versenden</label>
+              <method/>
+              <type>:task</type>
+              <arguments/>
+            </parameters>
+          </call>
+        </alternative>
+        <alternative condition="Kunde nicht zufrieden" language="text/javascript"/>
+      </choose>
+    </description>
+  </description>
+  <transformation>
+    <description type="copy"/>
+    <dataelements type="none"/>
+    <endpoints type="none"/>
+  </transformation>
+</testset>
