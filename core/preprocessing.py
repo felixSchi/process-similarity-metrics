@@ -1,8 +1,9 @@
 import re
 from deep_translator import GoogleTranslator
-    
+
+# Texte aus einer Liste ins Englische übersetzen    
 def translate_elements(texts: list[str], target_lang: str = "en") -> list[str]:
-    # Alle Elemente der Liste ins Englische übersetzen
+    # Alle Elemente der Liste iterativ übersetzen
     translated = []
     for text in texts:
         try:
@@ -14,7 +15,7 @@ def translate_elements(texts: list[str], target_lang: str = "en") -> list[str]:
 
 # Teilt einen Text in Sätze auf (Punkt als Trennzeichen)
 def split_into_sentences(text: str) -> list[str]:
-    sentences = re.split(r'[.]+', text)
+    sentences = re.split(r'[.!?]+', text)
     return [s.strip() for s in sentences if s.strip()]
 
 # Teilt ein BPMN-Modell in Tasks auf
@@ -34,7 +35,7 @@ def split_bpmn_into_tasks_and_gateways(bpmn_model: str) -> list[str]:
 
     # Bei "<parallel" das Wort "parallel" extrahieren und in Liste einfügen
     if re.search(r'<parallel', bpmn_model):
-        elements.append("parallel tasks")
+        elements.append("do something in parallel")
 
     # Alle condition-Texte von "<choose mode="exclusive"" bis "</choose>" extrahieren und in separate Liste einfügen
     exclusives = re.findall(r'<choose mode="exclusive".*?</choose>', bpmn_model, re.DOTALL)
@@ -51,7 +52,7 @@ def split_bpmn_into_tasks_and_gateways(bpmn_model: str) -> list[str]:
 
 # Nur zum testen:
 if __name__ == "__main__":
-    with open("data/bpmn/Llama-xml.xml", "r") as f:
+    with open("data/bpmn/Llama.xml", "r") as f:
         text = f.read()
     
     sentences = split_bpmn_into_tasks_and_gateways(text)
