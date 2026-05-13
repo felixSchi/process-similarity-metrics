@@ -24,7 +24,7 @@ def split_bpmn_into_tasks(bpmn_model: str) -> list[str]:
     elements = re.findall(r'<label>(.*?)</label>', bpmn_model)
 
     # Falls nötig, deutsche Texte ins Englische übersetzen
-    elements = translate_elements(elements, target_lang="en")
+    # elements = translate_elements(elements, target_lang="en")
     
     return elements
 
@@ -46,7 +46,7 @@ def split_bpmn_into_tasks_and_gateways(bpmn_model: str) -> list[str]:
             elements.append("decision: " + ", ".join(conditions))
     
     # Falls nötig, deutsche Texte ins Englische übersetzen
-    elements = translate_elements(elements, target_lang="en")
+    # elements = translate_elements(elements, target_lang="en")
 
     return elements
 

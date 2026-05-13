@@ -16,34 +16,34 @@
   </attributes>
   <description>flowchart TD
 0:startevent:((startevent)) --&gt; 1:task:(Kundeneigenschaften aufnehmen Schwertlaenge Kettenbreite Antriebsart Leistung Gewicht)
-1:task:(Record customer specifications blade lenght, chain width, drive type, power, weight) --&gt; 2:parallelgateway:{AND}
-2:parallelgateway:{AND} --&gt; 3:task:(Order guide bar)
-2:parallelgateway:{AND} --&gt; 4:task:(Order saw chain)
-2:parallelgateway:{AND} --&gt; 5:task:(Order engine or electric motor)
-2:parallelgateway:{AND} --&gt; 6:task:(Order housing)
-2:parallelgateway:{AND} --&gt; 7:task:(Order safety components)
-3:task:(Order guide bar) --&gt; 8:parallelgateway:{AND}
-4:task:(Order saw chain) --&gt; 8:parallelgateway:{AND}
-5:task:(Order engine or electric motor) --&gt; 8:parallelgateway:{AND}
-6:task:(Order housing) --&gt; 8:parallelgateway:{AND}
-7:task:(Order safety components) --&gt; 8:parallelgateway:{AND}
-8:parallelgateway:{AND} --&gt; 9:task:(Check all parts manually)
-9:task:(Check all parts manually) --&gt; 10:task:(Send production update to customer)
-10:task:(Send production update to customer) --&gt; 11:task:(Assemble parts)
-11:task:(Assemble parts) --&gt; 12:task:(Send production update to customer)
-12:task:(Send production update to customer) --&gt; 13:task:(Send first saw to customer)
-13:task:(Send first saw to customer) --&gt; 14:task:(Collect customer feedback)
-14:task:(Collect customer feedback) --&gt; 15:exclusivegateway:{x}
-15:exclusivegateway:{x} --&gt; |Customer satisfied|16:task:(Produce remaining order)
-15:exclusivegateway:{x} --&gt; |Customer not satisfied|17:endevent:(((endevent)))
-16:task:(Produce remaining order) --&gt; 18:task:(Send production update to customer)
-18:task:(Send production update to customer) --&gt; 19:task:(Send remaining order to customer)
-19:task:(Send remaining order to customer) --&gt; 20:endevent:(((endevent)))
+1:task:(Kundeneigenschaften aufnehmen Schwertlaenge Kettenbreite Antriebsart Leistung Gewicht) --&gt; 2:parallelgateway:{AND}
+2:parallelgateway:{AND} --&gt; 3:task:(Fuehrungsschiene bestellen)
+2:parallelgateway:{AND} --&gt; 4:task:(Saegekette bestellen)
+2:parallelgateway:{AND} --&gt; 5:task:(Motor oder Elektroantrieb bestellen)
+2:parallelgateway:{AND} --&gt; 6:task:(Gehaeuse bestellen)
+2:parallelgateway:{AND} --&gt; 7:task:(Sicherheitsbauteile bestellen)
+3:task:(Fuehrungsschiene bestellen) --&gt; 8:parallelgateway:{AND}
+4:task:(Saegekette bestellen) --&gt; 8:parallelgateway:{AND}
+5:task:(Motor oder Elektroantrieb bestellen) --&gt; 8:parallelgateway:{AND}
+6:task:(Gehaeuse bestellen) --&gt; 8:parallelgateway:{AND}
+7:task:(Sicherheitsbauteile bestellen) --&gt; 8:parallelgateway:{AND}
+8:parallelgateway:{AND} --&gt; 9:task:(Alle Teile manuell pruefen)
+9:task:(Alle Teile manuell pruefen) --&gt; 10:task:(Produktionsupdate an Kunden senden)
+10:task:(Produktionsupdate an Kunden senden) --&gt; 11:task:(Teile montieren)
+11:task:(Teile montieren) --&gt; 12:task:(Produktionsupdate an Kunden senden)
+12:task:(Produktionsupdate an Kunden senden) --&gt; 13:task:(Erste Saege an Kunden versenden)
+13:task:(Erste Saege an Kunden versenden) --&gt; 14:task:(Kundenfeedback einholen)
+14:task:(Kundenfeedback einholen) --&gt; 15:exclusivegateway:{x}
+15:exclusivegateway:{x} --&gt; |Kunde zufrieden|16:task:(Restbestellung produzieren)
+15:exclusivegateway:{x} --&gt; |Kunde nicht zufrieden|17:endevent:(((endevent)))
+16:task:(Restbestellung produzieren) --&gt; 18:task:(Produktionsupdate an Kunden senden)
+18:task:(Produktionsupdate an Kunden senden) --&gt; 19:task:(Restbestellung an Kunden versenden)
+19:task:(Restbestellung an Kunden versenden) --&gt; 20:endevent:(((endevent)))
     <description xmlns="http://cpee.org/ns/description/1.0"
       xmlns:a="http://cpee.org/ns/annotation/1.0">
       <call id="a1" endpoint="" a:alt_id="1">
         <parameters>
-          <label>Record customer specifications blade lenght, chain width, drive type, power, weight</label>
+          <label>Kundeneigenschaften aufnehmen Schwertlaenge Kettenbreite Antriebsart Leistung Gewicht</label>
           <method/>
           <type>:task</type>
           <arguments/>
@@ -53,7 +53,7 @@
         <parallel_branch>
           <call id="a5" endpoint="" a:alt_id="3">
             <parameters>
-              <label>Order guide bar</label>
+              <label>Fuehrungsschiene bestellen</label>
               <method/>
               <type>:task</type>
               <arguments/>
@@ -63,7 +63,7 @@
         <parallel_branch>
           <call id="a7" endpoint="" a:alt_id="4">
             <parameters>
-              <label>Order saw chain</label>
+              <label>Saegekette bestellen</label>
               <method/>
               <type>:task</type>
               <arguments/>
@@ -73,7 +73,7 @@
         <parallel_branch>
           <call id="a9" endpoint="" a:alt_id="5">
             <parameters>
-              <label>Order engine or electric motor</label>
+              <label>Motor oder Elektroantrieb bestellen</label>
               <method/>
               <type>:task</type>
               <arguments/>
@@ -83,7 +83,7 @@
         <parallel_branch>
           <call id="a11" endpoint="" a:alt_id="6">
             <parameters>
-              <label>Order housing</label>
+              <label>Gehaeuse bestellen</label>
               <method/>
               <type>:task</type>
               <arguments/>
@@ -93,7 +93,7 @@
         <parallel_branch>
           <call id="a13" endpoint="" a:alt_id="7">
             <parameters>
-              <label>Order safety components</label>
+              <label>Sicherheitsbauteile bestellen</label>
               <method/>
               <type>:task</type>
               <arguments/>
@@ -103,7 +103,7 @@
       </parallel>
       <call id="a25" endpoint="" a:alt_id="9">
         <parameters>
-          <label>Check all parts manually</label>
+          <label>Alle Teile manuell pruefen</label>
           <method/>
           <type>:task</type>
           <arguments/>
@@ -111,7 +111,7 @@
       </call>
       <call id="a27" endpoint="" a:alt_id="10">
         <parameters>
-          <label>Send production update to customer</label>
+          <label>Produktionsupdate an Kunden senden</label>
           <method/>
           <type>:task</type>
           <arguments/>
@@ -119,7 +119,7 @@
       </call>
       <call id="a29" endpoint="" a:alt_id="11">
         <parameters>
-          <label>Assemble parts</label>
+          <label>Teile montieren</label>
           <method/>
           <type>:task</type>
           <arguments/>
@@ -127,7 +127,7 @@
       </call>
       <call id="a31" endpoint="" a:alt_id="12">
         <parameters>
-          <label>Send production update to customer</label>
+          <label>Produktionsupdate an Kunden senden</label>
           <method/>
           <type>:task</type>
           <arguments/>
@@ -135,7 +135,7 @@
       </call>
       <call id="a33" endpoint="" a:alt_id="13">
         <parameters>
-          <label>Send first saw to customer</label>
+          <label>Erste Saege an Kunden versenden</label>
           <method/>
           <type>:task</type>
           <arguments/>
@@ -143,17 +143,17 @@
       </call>
       <call id="a35" endpoint="" a:alt_id="14">
         <parameters>
-          <label>Collect customer feedback</label>
+          <label>Kundenfeedback einholen</label>
           <method/>
           <type>:task</type>
           <arguments/>
         </parameters>
       </call>
       <choose mode="exclusive" a:alt_id="15">
-        <alternative condition="Customer satisfied" language="text/javascript">
+        <alternative condition="Kunde zufrieden" language="text/javascript">
           <call id="a39" endpoint="" a:alt_id="16">
             <parameters>
-              <label>Produce remaining order</label>
+              <label>Restbestellung produzieren</label>
               <method/>
               <type>:task</type>
               <arguments/>
@@ -161,7 +161,7 @@
           </call>
           <call id="a43" endpoint="" a:alt_id="18">
             <parameters>
-              <label>Send production update to customer</label>
+              <label>Produktionsupdate an Kunden senden</label>
               <method/>
               <type>:task</type>
               <arguments/>
@@ -169,14 +169,14 @@
           </call>
           <call id="a45" endpoint="" a:alt_id="19">
             <parameters>
-              <label>Send remaining order to customer</label>
+              <label>Restbestellung an Kunden versenden</label>
               <method/>
               <type>:task</type>
               <arguments/>
             </parameters>
           </call>
         </alternative>
-        <alternative condition="Customer not satisfied" language="text/javascript"/>
+        <alternative condition="Kunde nicht zufrieden" language="text/javascript"/>
       </choose>
     </description>
   </description>
