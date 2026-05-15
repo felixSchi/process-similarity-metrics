@@ -46,10 +46,14 @@ if __name__ == "__main__":
     bpmn_path = ROOT_DIR / "data" / "bpmn" / bpmn_model
 
     # Daten einlesen
-    with open(text_path, "r") as f:
-        text = f.read()
-    with open(bpmn_path, "r") as f:
-        bpmn_model = f.read()
+    try:
+        with open(text_path, "r") as f:
+            text = f.read()
+        with open(bpmn_path, "r") as f:
+            bpmn_model = f.read()
+    except Exception as e:
+        print(f"Fehler beim Einlesen der Dateien. Evtl. wurde ein ungültiger Dateiname eingegeben oder die Dateien befinden sich nicht im richtigen Ordner. Fehlerdetails: {e}")
+        sys.exit(1)
 
     from core.preprocessing import split_into_sentences, split_bpmn_into_tasks, print_sentences_and_tasks
     # Text in Sätze aufteilen

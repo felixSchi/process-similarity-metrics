@@ -4,12 +4,21 @@ Python program to compute the M2T and T2T similarity between a business process 
 
 ## How to run the code:
 
-- First, run "pip install -r requirements.txt" in your console.
+### Preparation
+
+- First, put the files you want to analyze in the /data folders:
+  - The process description into /data/text (note that ot needs to be in valid .txt format without line separators)
+  - The BPMN-2.0 model into /data/bpmn (note that it needs to be in valid .xml format)
+- Then, run "pip install -r requirements.txt" in your console.
+
+### M2T-Similarity
 
 - To compute the m2t similarity of a bpmn model, run: "python3 m2t_main.py" in your console.
   - When asked to enter the name of the description, type "process-description.txt"
   - When asked to enter the name of the bpmn model, type "[Model].xml" (Model = ["Claude", "GPT", "Llama"])
   - The code will now automatically perform the m2t similarity computations, compute all metrics and print the solutions in the console.
+
+### T2T-Similarity
 
 - To compute the t2t similarity of a bpmn model, run "python3 t2t_main.py" in your console.
   - When asked to enter the name of the description, type "process-description.txt"
