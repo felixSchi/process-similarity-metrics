@@ -5,11 +5,6 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-from core.preprocessing import split_into_sentences, split_bpmn_into_tasks, print_sentences_and_tasks
-from core.similarity import calculate_similarity_matrix, print_similarity_matrix
-from core.matching import match_tasks_to_sentences, apply_threshold
-from core.metrics import calculate_metrics
-
 
 # Berechnung für eine Methode durchführen
 def run_similarity_analysis(sentences, tasks, method, threshold):
@@ -40,7 +35,7 @@ def run_similarity_analysis(sentences, tasks, method, threshold):
     print(f"\nPrecision: {precision:.2f}, Recall: {recall:.2f}, F1-Score: {f1:.2f}, Average Similarity: {avg_similarity:.2f}")
 
 
-# Hauptfunktion, die die Berechnung für alle drei Methoden und den angegebenen Modell und Text durchführt
+# Hauptfunktion, die die Berechnung für alle drei Methoden und den angegebenen Modell und Text durchführt (Lazy Imports)
 if __name__ == "__main__":
     # Text und BPMN-Modell auf der Konsole auswählen lassen
     text = input("Geben Sie den Namen der Textdatei (im Ordner \"data/text\") ein (z.B. 'process-description.txt'): ")
@@ -56,15 +51,19 @@ if __name__ == "__main__":
     with open(bpmn_path, "r") as f:
         bpmn_model = f.read()
 
+    from core.preprocessing import split_into_sentences, split_bpmn_into_tasks, print_sentences_and_tasks
     # Text in Sätze aufteilen
     sentences = split_into_sentences(text)
     # BPMN-Modell in Tasks aufteilen
     tasks = split_bpmn_into_tasks(bpmn_model)
-
     # Ausgabe der Sätze und Tasks
     print_sentences_and_tasks(sentences, tasks)
 
     # Ähnlichkeitsanalyse für verschiedene Methoden durchführen
+    from core.similarity import calculate_similarity_matrix, print_similarity_matrix
+    from core.matching import match_tasks_to_sentences, apply_threshold
+    from core.metrics import calculate_metrics
+
     methods = ["levenshtein", "tfidf", "embedding"]
     thresholds = [0.15, 0.09, 0.38]  # jeweiliger Threshold für jede Methode
 

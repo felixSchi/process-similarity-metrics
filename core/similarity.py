@@ -1,6 +1,15 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sentence_transformers import SentenceTransformer, util
+# Import für Levenshtein Similarity
 from rapidfuzz.distance import Levenshtein
+
+# Import für TF-IDF
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Import für Embedding Similarity
+import os
+import warnings
+os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
+warnings.filterwarnings("ignore")
+from sentence_transformers import SentenceTransformer, util
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # Levenshtein-Similarity (mit rapidfuzz) (Character-Level)

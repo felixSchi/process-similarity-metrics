@@ -35,7 +35,7 @@ def split_bpmn_into_tasks_and_gateways(bpmn_model: str) -> list[str]:
 
 # Sätze und Tasks printen
 def print_sentences_and_tasks(sentences, tasks):
-    print("Sentences:")
+    print("\nSentences:")
     # jeden Satz printen
     for sentence in sentences:
         print(sentence)
