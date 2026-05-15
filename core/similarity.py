@@ -1,35 +1,11 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sentence_transformers import SentenceTransformer
+from rapidfuzz.distance import Levenshtein
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-# Levenshtein-Distance (Character-Level)
-def levenshtein_distance(s1, s2):
-    if len(s1) < len(s2):
-        return levenshtein_distance(s2, s1)
-
-    if len(s2) == 0:
-        return len(s1)
-
-    previous_row = range(len(s2) + 1)
-    for i, c1 in enumerate(s1):
-        current_row = [i + 1]
-        for j, c2 in enumerate(s2):
-            insertions = previous_row[j + 1] + 1
-            deletions = current_row[j] + 1
-            substitutions = previous_row[j] + (c1 != c2)
-            current_row.append(min(insertions, deletions, substitutions))
-        previous_row = current_row
-
-    return previous_row[-1]
-
-# Levenshtein Similarity (Character-Level)
+# Levenshtein-Distanz (rapidfuzz) (Character-Level)
 def levenshtein_similarity(s1, s2):
-    s1, s2 = s1.lower(), s2.lower()  # Groß-/Kleinschreibung ignorieren
-    distance = levenshtein_distance(s1, s2)
-    max_len = max(len(s1), len(s2))
-    if max_len == 0:
-        return 1.0
-    return (max_len - distance) / max_len
+    return Levenshtein.normalized_distance(s1, s2)
 
 # TF-IDF Similarity (Word-Level)
 def tfidf_similarity(text1, text2):
@@ -52,3 +28,31 @@ def embedding_similarity(text1, text2):
     embedding1 = model.encode(text1)
     embedding2 = model.encode(text2)
     return cosine_similarity_of_two_vectors(embedding1, embedding2)
+
+# Similarity-Matrix berechnen
+def calculate_similarity_matrix(sentences, tasks, method):
+    matrix = []
+    for sentence in sentences:
+        row = []
+        for task in tasks:
+            if method == "levenshtein":
+                similarity = levenshtein_similarity(sentence, task)
+            elif method == "tfidf":
+                similarity = tfidf_similarity(sentence, task)
+            elif method == "embedding":
+                similarity = embedding_similarity(sentence, task)
+            row.append(similarity)
+        matrix.append(row)
+    return matrix
+
+
+# Similarity-Matrix printen
+def print_similarity_matrix(matrix, sentences, tasks):
+    # Header der Tabelle mit Task-Nummern
+    header = [""] + [f"T{i}" for i in range(1, len(tasks) + 1)]
+    print("\t".join(header))
+
+    # Zeilen der Tabelle mit Satz-Nummern und Similarity-Werten
+    for i, (sentence, row) in enumerate(zip(sentences, matrix), start=1):
+        row_str = [f"S{i}"] + [f"{similarity:.2f}" for similarity in row]
+        print("\t".join(row_str))

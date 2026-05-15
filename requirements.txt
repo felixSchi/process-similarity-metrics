@@ -1,3 +1,4 @@
 deep-translator
 scikit-learn
+rapidfuzz
 sentence-transformers

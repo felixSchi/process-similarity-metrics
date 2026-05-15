@@ -5,53 +5,50 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-from core.preprocessing import split_into_sentences, split_bpmn_into_tasks
-from core.similarity import levenshtein_similarity, tfidf_similarity, embedding_similarity
-
-# Sätze und Tasks printen
-def print_sentences_and_tasks(sentences, tasks):
-    print("Sentences:")
-    # für jeden Satz Nummer und Satz printen
-    for i, sentence in enumerate(sentences, start=1):
-        print(f"S{i}: {sentence}")
-
-    print("\nTasks:")
-    # für jeden Task Nummer und Task printen
-    for i, task in enumerate(tasks, start=1):
-        print(f"T{i}: {task}")
-
-# Similarity-Matrix berechnen
-def calculate_similarity_matrix(sentences, tasks, method):
-    matrix = []
-    for sentence in sentences:
-        row = []
-        for task in tasks:
-            if method == "levenshtein":
-                similarity = levenshtein_similarity(sentence, task)
-            elif method == "tfidf":
-                similarity = tfidf_similarity(sentence, task)
-            elif method == "embedding":
-                similarity = embedding_similarity(sentence, task)
-            row.append(similarity)
-        matrix.append(row)
-    return matrix
-
-# Similarity-Matrix printen
-def print_similarity_matrix(matrix, sentences, tasks):
-    # Header der Tabelle mit Task-Nummern
-    header = [""] + [f"T{i}" for i in range(1, len(tasks) + 1)]
-    print("\t".join(header))
-
-    # Zeilen der Tabelle mit Satz-Nummern und Similarity-Werten
-    for i, (sentence, row) in enumerate(zip(sentences, matrix), start=1):
-        row_str = [f"S{i}"] + [f"{similarity:.2f}" for similarity in row]
-        print("\t".join(row_str))
+from core.preprocessing import split_into_sentences, split_bpmn_into_tasks, print_sentences_and_tasks
+from core.similarity import calculate_similarity_matrix, print_similarity_matrix
+from core.matching import match_tasks_to_sentences, apply_threshold
+from core.metrics import calculate_metrics
 
 
+# Berechnung für eine Methode durchführen
+def run_similarity_analysis(sentences, tasks, method, threshold):
+    print(f"\nRunning similarity analysis with method: {method}")
+    # Similarity-Matrix berechnen
+    print("\nSimilarity Matrix:")
+    similarity_matrix = calculate_similarity_matrix(sentences, tasks, method)
+    print_similarity_matrix(similarity_matrix, sentences, tasks)
+
+    # Matching durchführen
+    matches = match_tasks_to_sentences(similarity_matrix, sentences, tasks)
+    print("\nMatches:")
+    for task, (sentence, similarity) in matches.items():     
+        print(f"Task: {task}\nBest Match: {sentence}\nSimilarity: {similarity:.2f}\n")
+
+    # Threshold anwenden
+    filtered_matches = apply_threshold(matches, threshold)
+    print(f"\nMatches nach Threshold {threshold}:")
+    # Für jeden übrigen Task printen: Task Nr., best match Nr., similarity
+    # Task Nr und best match Nr können aus den Strings extrahiert werden, z.B. "T1: Taskname" -> "T1", "S2: Satz" -> "S2"
+    for task, (sentence, similarity) in filtered_matches.items():
+        task_num = task.split(":")[0]  # z.B. "T1"
+        sentence_num = sentence.split(":")[0]  # z.B. "S2"
+        print(f"Task: {task_num}, Best Match: {sentence_num}, Similarity: {similarity:.2f}")
+
+    # Metriken berechnen
+    precision, recall, f1, avg_similarity = calculate_metrics(filtered_matches, sentences, tasks)
+    print(f"\nPrecision: {precision:.2f}, Recall: {recall:.2f}, F1-Score: {f1:.2f}, Average Similarity: {avg_similarity:.2f}")
+
+
+# Hauptfunktion, die die Berechnung für alle drei Methoden und den angegebenen Modell und Text durchführt
 if __name__ == "__main__":
+    # Text und BPMN-Modell auf der Konsole auswählen lassen
+    text = input("Geben Sie den Namen der Textdatei (im Ordner \"data/text\") ein (z.B. 'process-description.txt'): ")
+    bpmn_model = input("Geben Sie den Namen der BPMN-Modell-Datei (im Ordner \"data/bpmn\") ein (z.B. 'GPT.xml'): ")
+
     # Input:
-    text_path = ROOT_DIR / "data" / "text" / "process-description.txt"
-    bpmn_path = ROOT_DIR / "data" / "bpmn" / "Claude.xml"
+    text_path = ROOT_DIR / "data" / "text" / text
+    bpmn_path = ROOT_DIR / "data" / "bpmn" / bpmn_model
 
     # Daten einlesen
     with open(text_path, "r") as f:
@@ -67,9 +64,9 @@ if __name__ == "__main__":
     # Ausgabe der Sätze und Tasks
     print_sentences_and_tasks(sentences, tasks)
 
-    # Similarity-Matrix berechnen
-    similarity_matrix = calculate_similarity_matrix(sentences, tasks, method="tfidf")
-    
-    # Similarity-Matrix printen
-    print("\nSimilarity Matrix:")
-    print_similarity_matrix(similarity_matrix, sentences, tasks)
+    # Ähnlichkeitsanalyse für verschiedene Methoden durchführen
+    methods = ["levenshtein", "tfidf", "embedding"]
+    thresholds = [0.85, 0.09, 0.38]  # jeweiliger Threshold für jede Methode
+
+    for method, threshold in zip(methods, thresholds):
+        run_similarity_analysis(sentences, tasks, method, threshold)
