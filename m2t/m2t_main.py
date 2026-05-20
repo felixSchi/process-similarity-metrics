@@ -69,7 +69,7 @@ if __name__ == "__main__":
     from core.metrics import calculate_metrics
 
     methods = ["levenshtein", "tfidf", "embedding"]
-    thresholds = [0.15, 0.09, 0.38]  # jeweiliger Threshold für jede Methode
+    thresholds = [0.41, 0.13, 0.36]  # jeweiliger Threshold für jede Methode
 
     for method, threshold in zip(methods, thresholds):
         run_similarity_analysis(sentences, tasks, method, threshold)
