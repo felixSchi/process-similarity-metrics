@@ -15,7 +15,7 @@
     <theme>preset</theme>
   </attributes>
   <description>flowchart TD
-0:startevent:((startevent)) --&gt; 1:task:(Kundeneigenschaften aufnehmen Schwertlaenge Kettenbreite Antriebsart Leistung Gewicht)
+0:startevent:((startevent)) --&gt; 1:task:(Record customer specifications blade lenght, chain width, drive type, power, weight)
 1:task:(Record customer specifications blade lenght, chain width, drive type, power, weight) --&gt; 2:parallelgateway:{AND}
 2:parallelgateway:{AND} --&gt; 3:task:(Order guide bar)
 2:parallelgateway:{AND} --&gt; 4:task:(Order saw chain)
