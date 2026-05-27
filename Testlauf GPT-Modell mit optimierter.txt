@@ -1,0 +1,286 @@
+Testlauf GPT-Modell mit optimierter Beschreibung
+
+Running similarity analysis with method: levenshtein
+
+Similarity Matrix:
+        T1      T2      T3      T4      T5      T6      T7      T8      T9      T10     T11    T12      T13     T14
+S1      0.87    0.25    0.28    0.30    0.22    0.22    0.24    0.19    0.25    0.19    0.28   0.28     0.25    0.22
+S2      0.22    0.78    0.56    0.24    0.28    0.31    0.20    0.24    0.26    0.20    0.22   0.24     0.20    0.19
+S3      0.20    0.57    0.76    0.22    0.29    0.29    0.22    0.22    0.24    0.22    0.20   0.31     0.24    0.20
+S4      0.23    0.28    0.28    0.78    0.39    0.41    0.20    0.19    0.30    0.20    0.26   0.22     0.20    0.26
+S5      0.27    0.27    0.18    0.45    0.68    0.46    0.26    0.18    0.22    0.24    0.24   0.24     0.18    0.29
+S6      0.27    0.31    0.31    0.41    0.43    0.76    0.24    0.22    0.35    0.20    0.31   0.29     0.18    0.24
+S7      0.30    0.25    0.31    0.34    0.27    0.31    0.58    0.21    0.22    0.18    0.21   0.14     0.15    0.18
+S8      0.20    0.23    0.18    0.20    0.18    0.28    0.41    0.82    0.32    0.26    0.29   0.22     0.18    0.15
+S9      0.27    0.25    0.26    0.25    0.24    0.19    0.26    0.24    0.21    0.55    0.17   0.17     0.19    0.33
+S10     0.23    0.13    0.18    0.13    0.20    0.22    0.24    0.24    0.82    0.31    0.71   0.56     0.24    0.20
+S11     0.25    0.24    0.31    0.24    0.28    0.30    0.22    0.22    0.59    0.22    0.74   0.41     0.20    0.22
+S12     0.25    0.17    0.20    0.22    0.20    0.24    0.20    0.26    0.50    0.39    0.50   0.74     0.20    0.30
+S13     0.25    0.20    0.33    0.24    0.26    0.26    0.17    0.20    0.26    0.24    0.26   0.35     0.61    0.20
+S14     0.22    0.14    0.18    0.23    0.27    0.18    0.23    0.25    0.18    0.39    0.20   0.20     0.20    0.68
+
+Matches:
+Task: T1: Receive customer requirements with at least 5 properties
+Best Match: S1: Frist, receive customer requirements with at least 5 properties
+Similarity: 0.87
+
+Task: T2: Order guide bar based on required length
+Best Match: S2: Then, order the guide bar based on required length
+Similarity: 0.78
+
+Task: T3: Order chain based on required width
+Best Match: S3: Then, order the chain based on required width
+Similarity: 0.76
+
+Task: T4: Order motor or electric drive components
+Best Match: S4: Then, order the motor or electric drive components
+Similarity: 0.78
+
+Task: T5: Order housing components
+Best Match: S5: Then, order the housing components
+Similarity: 0.68
+
+Task: T6: Order safety and control components
+Best Match: S6: Then, order the safety and control components
+Similarity: 0.76
+
+Task: T7: Receive all parts
+Best Match: S7: After that, receive all parts
+Similarity: 0.58
+
+Task: T8: Inspect all parts manually
+Best Match: S8: And inspect all parts manually
+Similarity: 0.82
+
+Task: T9: Send first status update to customer
+Best Match: S10: You send first status update to customer
+Similarity: 0.82
+
+Task: T10: Assemble first chainsaw
+Best Match: S9: Before you assemble the first chainsaw
+Similarity: 0.55
+
+Task: T11: Send second status update to customer
+Best Match: S11: After that, send second status update to customer
+Similarity: 0.74
+
+Task: T12: Ship first chainsaw to customer
+Best Match: S12: Then, ship first the chainsaw to customer
+Similarity: 0.74
+
+Task: T13: Collect customer feedback
+Best Match: S13: After that, collect the customer feedback
+Similarity: 0.61
+
+Task: T14: Produce remaining chainsaws
+Best Match: S14: Lastly, produce the remaining chainsaws
+Similarity: 0.68
+
+
+Matches nach Threshold 0.15:
+Task: T1, Best Match: S1, Similarity: 0.87
+Task: T2, Best Match: S2, Similarity: 0.78
+Task: T3, Best Match: S3, Similarity: 0.76
+Task: T4, Best Match: S4, Similarity: 0.78
+Task: T5, Best Match: S5, Similarity: 0.68
+Task: T6, Best Match: S6, Similarity: 0.76
+Task: T7, Best Match: S7, Similarity: 0.58
+Task: T8, Best Match: S8, Similarity: 0.82
+Task: T9, Best Match: S10, Similarity: 0.82
+Task: T10, Best Match: S9, Similarity: 0.55
+Task: T11, Best Match: S11, Similarity: 0.74
+Task: T12, Best Match: S12, Similarity: 0.74
+Task: T13, Best Match: S13, Similarity: 0.61
+Task: T14, Best Match: S14, Similarity: 0.68
+
+Precision: 1.00, Recall: 1.00, F1-Score: 1.00, Average Similarity: 0.73
+
+Running similarity analysis with method: tfidf
+
+Similarity Matrix:
+        T1      T2      T3      T4      T5      T6      T7      T8      T9      T10     T11    T12      T13     T14
+S1      0.71    0.00    0.00    0.00    0.00    0.00    0.09    0.00    0.07    0.00    0.07   0.07     0.09    0.00
+S2      0.00    0.65    0.32    0.06    0.09    0.07    0.00    0.00    0.00    0.00    0.00   0.00     0.00    0.00
+S3      0.00    0.31    0.62    0.07    0.09    0.07    0.00    0.00    0.00    0.00    0.00   0.00     0.00    0.00
+S4      0.00    0.06    0.07    0.62    0.21    0.16    0.00    0.00    0.00    0.00    0.00   0.00     0.00    0.00
+S5      0.00    0.08    0.08    0.18    0.45    0.20    0.00    0.00    0.00    0.00    0.00   0.00     0.00    0.00
+S6      0.00    0.07    0.07    0.16    0.22    0.57    0.00    0.00    0.00    0.00    0.00   0.00     0.00    0.00
+S7      0.08    0.00    0.00    0.00    0.00    0.00    0.45    0.23    0.00    0.00    0.00   0.00     0.00    0.00
+S8      0.00    0.00    0.00    0.00    0.00    0.09    0.26    0.58    0.00    0.00    0.00   0.00     0.00    0.00
+S9      0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.08    0.41    0.00   0.18     0.00    0.00
+S10     0.07    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.67    0.10    0.51   0.28     0.10    0.00
+S11     0.06    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.47    0.00    0.62   0.16     0.09    0.00
+S12     0.07    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.25    0.22    0.16   0.57     0.10    0.00
+S13     0.07    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.08    0.00    0.08   0.08     0.41    0.00
+S14     0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00   0.00     0.00    0.45
+
+Matches:
+Task: T1: Receive customer requirements with at least 5 properties
+Best Match: S1: Frist, receive customer requirements with at least 5 properties
+Similarity: 0.71
+
+Task: T2: Order guide bar based on required length
+Best Match: S2: Then, order the guide bar based on required length
+Similarity: 0.65
+
+Task: T3: Order chain based on required width
+Best Match: S3: Then, order the chain based on required width
+Similarity: 0.62
+
+Task: T4: Order motor or electric drive components
+Best Match: S4: Then, order the motor or electric drive components
+Similarity: 0.62
+
+Task: T5: Order housing components
+Best Match: S5: Then, order the housing components
+Similarity: 0.45
+
+Task: T6: Order safety and control components
+Best Match: S6: Then, order the safety and control components
+Similarity: 0.57
+
+Task: T7: Receive all parts
+Best Match: S7: After that, receive all parts
+Similarity: 0.45
+
+Task: T8: Inspect all parts manually
+Best Match: S8: And inspect all parts manually
+Similarity: 0.58
+
+Task: T9: Send first status update to customer
+Best Match: S10: You send first status update to customer
+Similarity: 0.67
+
+Task: T10: Assemble first chainsaw
+Best Match: S9: Before you assemble the first chainsaw
+Similarity: 0.41
+
+Task: T11: Send second status update to customer
+Best Match: S11: After that, send second status update to customer
+Similarity: 0.62
+
+Task: T12: Ship first chainsaw to customer
+Best Match: S12: Then, ship first the chainsaw to customer
+Similarity: 0.57
+
+Task: T13: Collect customer feedback
+Best Match: S13: After that, collect the customer feedback
+Similarity: 0.41
+
+Task: T14: Produce remaining chainsaws
+Best Match: S14: Lastly, produce the remaining chainsaws
+Similarity: 0.45
+
+
+Matches nach Threshold 0.09:
+Task: T1, Best Match: S1, Similarity: 0.71
+Task: T2, Best Match: S2, Similarity: 0.65
+Task: T3, Best Match: S3, Similarity: 0.62
+Task: T4, Best Match: S4, Similarity: 0.62
+Task: T5, Best Match: S5, Similarity: 0.45
+Task: T6, Best Match: S6, Similarity: 0.57
+Task: T7, Best Match: S7, Similarity: 0.45
+Task: T8, Best Match: S8, Similarity: 0.58
+Task: T9, Best Match: S10, Similarity: 0.67
+Task: T10, Best Match: S9, Similarity: 0.41
+Task: T11, Best Match: S11, Similarity: 0.62
+Task: T12, Best Match: S12, Similarity: 0.57
+Task: T13, Best Match: S13, Similarity: 0.41
+Task: T14, Best Match: S14, Similarity: 0.45
+
+Precision: 1.00, Recall: 1.00, F1-Score: 1.00, Average Similarity: 0.55
+
+Running similarity analysis with method: embedding
+
+Similarity Matrix:
+        T1      T2      T3      T4      T5      T6      T7      T8      T9      T10     T11    T12      T13     T14
+S1      0.82    0.21    0.13    0.17    0.28    0.18    0.25    0.11    0.21    0.10    0.18   0.24     0.29    0.09
+S2      0.22    0.83    0.46    0.24    0.25    0.25    0.14    0.18    0.09    0.20    0.11   0.26     0.10    0.20
+S3      0.13    0.51    0.83    0.28    0.22    0.26    0.10    0.10    0.08    0.33    0.05   0.32     0.08    0.30
+S4      0.20    0.18    0.19    0.81    0.40    0.38    0.34    0.30    0.06    0.27    0.02   0.25     0.11    0.25
+S5      0.35    0.14    0.11    0.40    0.77    0.33    0.42    0.33    0.12    0.23    0.07   0.21     0.20    0.16
+S6      0.17    0.21    0.21    0.43    0.41    0.81    0.36    0.35    0.18    0.24    0.12   0.24     0.24    0.17
+S7      0.22    0.11    0.08    0.26    0.32    0.28    0.80    0.38    0.26    0.24    0.20   0.24     0.31    0.27
+S8      0.14    0.15    0.10    0.30    0.32    0.36    0.45    0.87    0.12    0.34    0.06   0.21     0.22    0.30
+S9      0.08    0.18    0.29    0.32    0.26    0.35    0.30    0.38    0.23    0.78    0.05   0.60     0.14    0.56
+S10     0.26    0.11    0.04    0.03    0.09    0.18    0.24    0.09    0.83    0.19    0.75   0.34     0.37    0.07
+S11     0.22    0.13    0.07    0.03    0.08    0.15    0.25    0.11    0.73    0.13    0.86   0.33     0.41    0.12
+S12     0.23    0.26    0.32    0.29    0.29    0.32    0.28    0.21    0.27    0.61    0.26   0.86     0.28    0.61
+S13     0.29    0.13    0.10    0.16    0.22    0.28    0.32    0.20    0.37    0.19    0.38   0.36     0.82    0.23
+S14     0.14    0.19    0.26    0.30    0.25    0.22    0.30    0.29    0.04    0.63    0.07   0.56     0.18    0.85
+
+Matches:
+Task: T1: Receive customer requirements with at least 5 properties
+Best Match: S1: Frist, receive customer requirements with at least 5 properties
+Similarity: 0.82
+
+Task: T2: Order guide bar based on required length
+Best Match: S2: Then, order the guide bar based on required length
+Similarity: 0.83
+
+Task: T3: Order chain based on required width
+Best Match: S3: Then, order the chain based on required width
+Similarity: 0.83
+
+Task: T4: Order motor or electric drive components
+Best Match: S4: Then, order the motor or electric drive components
+Similarity: 0.81
+
+Task: T5: Order housing components
+Best Match: S5: Then, order the housing components
+Similarity: 0.77
+
+Task: T6: Order safety and control components
+Best Match: S6: Then, order the safety and control components
+Similarity: 0.81
+
+Task: T7: Receive all parts
+Best Match: S7: After that, receive all parts
+Similarity: 0.80
+
+Task: T8: Inspect all parts manually
+Best Match: S8: And inspect all parts manually
+Similarity: 0.87
+
+Task: T9: Send first status update to customer
+Best Match: S10: You send first status update to customer
+Similarity: 0.83
+
+Task: T10: Assemble first chainsaw
+Best Match: S9: Before you assemble the first chainsaw
+Similarity: 0.78
+
+Task: T11: Send second status update to customer
+Best Match: S11: After that, send second status update to customer
+Similarity: 0.86
+
+Task: T12: Ship first chainsaw to customer
+Best Match: S12: Then, ship first the chainsaw to customer
+Similarity: 0.86
+
+Task: T13: Collect customer feedback
+Best Match: S13: After that, collect the customer feedback
+Similarity: 0.82
+
+Task: T14: Produce remaining chainsaws
+Best Match: S14: Lastly, produce the remaining chainsaws
+Similarity: 0.85
+
+
+Matches nach Threshold 0.38:
+Task: T1, Best Match: S1, Similarity: 0.82
+Task: T2, Best Match: S2, Similarity: 0.83
+Task: T3, Best Match: S3, Similarity: 0.83
+Task: T4, Best Match: S4, Similarity: 0.81
+Task: T5, Best Match: S5, Similarity: 0.77
+Task: T6, Best Match: S6, Similarity: 0.81
+Task: T7, Best Match: S7, Similarity: 0.80
+Task: T8, Best Match: S8, Similarity: 0.87
+Task: T9, Best Match: S10, Similarity: 0.83
+Task: T10, Best Match: S9, Similarity: 0.78
+Task: T11, Best Match: S11, Similarity: 0.86
+Task: T12, Best Match: S12, Similarity: 0.86
+Task: T13, Best Match: S13, Similarity: 0.82
+Task: T14, Best Match: S14, Similarity: 0.85
+
+Precision: 1.00, Recall: 1.00, F1-Score: 1.00, Average Similarity: 0.82

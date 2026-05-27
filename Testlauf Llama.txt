@@ -1,0 +1,269 @@
+Testlauf Llama
+
+Sentences:
+S1: You produce custom chainsaws on demand
+S2: Your chainsaws have at least 5 properties such as length of the "guide bar" (Schwertlaenge), chain width, electric or motor chainsaw
+S3: After your customer told you the properties, you can start ordering the parts from various online sources (in parallel)
+S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+S5: During production, you regularly send updates to your customer
+S6: After producing the first saw you send it to your customer
+S7: If he likes it, the rest of his order are produced
+
+Tasks:
+T1: Get customer properties
+T2: Order guide bar
+T3: Order chain
+T4: Order electric or motor parts
+T5: Order handle
+T6: Order safety features
+T7: Manual inspection of all parts
+T8: Send update to customer: parts arrived
+T9: Assemble parts
+T10: Send update to customer: assembly in progress
+T11: Send first saw to customer
+T12: Get customer feedback
+T13: Produce rest of order
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Running similarity analysis with method: levenshtein
+
+Similarity Matrix:
+        T1      T2      T3      T4      T5      T6      T7      T8      T9      T10     T11    T12      T13
+S1      0.26    0.21    0.26    0.21    0.24    0.19    0.19    0.26    0.14    0.32    0.21   0.29     0.38
+S2      0.13    0.12    0.09    0.20    0.10    0.12    0.17    0.18    0.10    0.19    0.12   0.12     0.12
+S3      0.19    0.11    0.11    0.19    0.10    0.15    0.17    0.24    0.11    0.24    0.15   0.14     0.16
+S4      0.17    0.14    0.10    0.23    0.12    0.16    0.30    0.23    0.16    0.24    0.17   0.15     0.16
+S5      0.21    0.18    0.12    0.23    0.17    0.23    0.27    0.27    0.15    0.23    0.30   0.18     0.26
+S6      0.23    0.18    0.15    0.26    0.18    0.26    0.19    0.26    0.15    0.23    0.40   0.16     0.27
+S7      0.26    0.19    0.13    0.26    0.17    0.20    0.28    0.33    0.15    0.24    0.26   0.22     0.30
+
+Matches:
+Task: T1: Get customer properties
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.26
+
+Task: T2: Order guide bar
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.21
+
+Task: T3: Order chain
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.26
+
+Task: T4: Order electric or motor parts
+Best Match: S7: If he likes it, the rest of his order are produced
+Similarity: 0.26
+
+Task: T5: Order handle
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.24
+
+Task: T6: Order safety features
+Best Match: S6: After producing the first saw you send it to your customer
+Similarity: 0.26
+
+Task: T7: Manual inspection of all parts
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.30
+
+Task: T8: Send update to customer: parts arrived
+Best Match: S7: If he likes it, the rest of his order are produced
+Similarity: 0.33
+
+Task: T9: Assemble parts
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.16
+
+Task: T10: Send update to customer: assembly in progress
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.32
+
+Task: T11: Send first saw to customer
+Best Match: S6: After producing the first saw you send it to your customer
+Similarity: 0.40
+
+Task: T12: Get customer feedback
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.29
+
+Task: T13: Produce rest of order
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.38
+
+
+Matches nach Threshold 0.15:
+Task: T1, Best Match: S1, Similarity: 0.26
+Task: T2, Best Match: S1, Similarity: 0.21
+Task: T3, Best Match: S1, Similarity: 0.26
+Task: T4, Best Match: S7, Similarity: 0.26
+Task: T5, Best Match: S1, Similarity: 0.24
+Task: T6, Best Match: S6, Similarity: 0.26
+Task: T7, Best Match: S4, Similarity: 0.30
+Task: T8, Best Match: S7, Similarity: 0.33
+Task: T9, Best Match: S4, Similarity: 0.16
+Task: T10, Best Match: S1, Similarity: 0.32
+Task: T11, Best Match: S6, Similarity: 0.40
+Task: T12, Best Match: S1, Similarity: 0.29
+Task: T13, Best Match: S1, Similarity: 0.38
+
+Precision: 1.00, Recall: 0.57, F1-Score: 0.73, Average Similarity: 0.28
+
+Running similarity analysis with method: tfidf
+
+Similarity Matrix:
+        T1      T2      T3      T4      T5      T6      T7      T8      T9      T10     T11    T12      T13
+S1      0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00   0.00     0.09
+S2      0.06    0.13    0.07    0.16    0.00    0.00    0.05    0.00    0.00    0.00    0.00   0.00     0.05
+S3      0.12    0.00    0.00    0.04    0.00    0.00    0.04    0.09    0.07    0.08    0.04   0.06     0.00
+S4      0.00    0.00    0.00    0.14    0.00    0.00    0.42    0.18    0.30    0.04    0.04   0.00     0.05
+S5      0.09    0.00    0.00    0.00    0.00    0.00    0.00    0.22    0.00    0.20    0.24   0.09     0.00
+S6      0.08    0.00    0.00    0.00    0.00    0.00    0.00    0.20    0.00    0.18    0.44   0.08     0.00
+S7      0.00    0.08    0.09    0.06    0.09    0.08    0.06    0.00    0.00    0.00    0.00   0.00     0.25
+
+Matches:
+Task: T1: Get customer properties
+Best Match: S3: After your customer told you the properties, you can start ordering the parts from various online sources (in parallel)
+Similarity: 0.12
+
+Task: T2: Order guide bar
+Best Match: S2: Your chainsaws have at least 5 properties such as length of the "guide bar" (Schwertlaenge), chain width, electric or motor chainsaw
+Similarity: 0.13
+
+Task: T3: Order chain
+Best Match: S7: If he likes it, the rest of his order are produced
+Similarity: 0.09
+
+Task: T4: Order electric or motor parts
+Best Match: S2: Your chainsaws have at least 5 properties such as length of the "guide bar" (Schwertlaenge), chain width, electric or motor chainsaw
+Similarity: 0.16
+
+Task: T5: Order handle
+Best Match: S7: If he likes it, the rest of his order are produced
+Similarity: 0.09
+
+Task: T6: Order safety features
+Best Match: S7: If he likes it, the rest of his order are produced
+Similarity: 0.08
+
+Task: T7: Manual inspection of all parts
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.42
+
+Task: T8: Send update to customer: parts arrived
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.22
+
+Task: T9: Assemble parts
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.30
+
+Task: T10: Send update to customer: assembly in progress
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.20
+
+Task: T11: Send first saw to customer
+Best Match: S6: After producing the first saw you send it to your customer
+Similarity: 0.44
+
+Task: T12: Get customer feedback
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.09
+
+Task: T13: Produce rest of order
+Best Match: S7: If he likes it, the rest of his order are produced
+Similarity: 0.25
+
+
+Matches nach Threshold 0.09:
+Task: T1, Best Match: S3, Similarity: 0.12
+Task: T2, Best Match: S2, Similarity: 0.13
+Task: T3, Best Match: S7, Similarity: 0.09
+Task: T4, Best Match: S2, Similarity: 0.16
+Task: T5, Best Match: S7, Similarity: 0.09
+Task: T7, Best Match: S4, Similarity: 0.42
+Task: T8, Best Match: S5, Similarity: 0.22
+Task: T9, Best Match: S4, Similarity: 0.30
+Task: T10, Best Match: S5, Similarity: 0.20
+Task: T11, Best Match: S6, Similarity: 0.44
+Task: T13, Best Match: S7, Similarity: 0.25
+
+Precision: 0.85, Recall: 0.86, F1-Score: 0.85, Average Similarity: 0.22
+
+Running similarity analysis with method: embedding
+
+Similarity Matrix:
+        T1      T2      T3      T4      T5      T6      T7      T8      T9      T10     T11    T12      T13
+S1      0.10    0.21    0.30    0.30    0.23    0.27    0.28    0.17    0.33    0.17    0.42   0.17     0.16
+S2      0.12    0.26    0.24    0.33    0.10    0.11    0.21    0.08    0.21    0.01    0.27   0.08     0.08
+S3      0.29    0.30    0.33    0.45    0.25    0.27    0.42    0.41    0.43    0.22    0.31   0.23     0.28
+S4      0.09    0.21    0.26    0.51    0.28    0.31    0.59    0.39    0.63    0.28    0.27   0.12     0.28
+S5      0.21    0.15    0.20    0.12    0.29    0.34    0.21    0.48    0.14    0.44    0.33   0.42     0.19
+S6      0.17    0.22    0.28    0.28    0.32    0.41    0.29    0.45    0.32    0.32    0.67   0.31     0.34
+S7      0.03    0.28    0.33    0.23    0.33    0.33    0.32    0.23    0.29    0.14    0.22   0.20     0.43
+
+Matches:
+Task: T1: Get customer properties
+Best Match: S3: After your customer told you the properties, you can start ordering the parts from various online sources (in parallel)
+Similarity: 0.29
+
+Task: T2: Order guide bar
+Best Match: S3: After your customer told you the properties, you can start ordering the parts from various online sources (in parallel)
+Similarity: 0.30
+
+Task: T3: Order chain
+Best Match: S3: After your customer told you the properties, you can start ordering the parts from various online sources (in parallel)
+Similarity: 0.33
+
+Task: T4: Order electric or motor parts
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.51
+
+Task: T5: Order handle
+Best Match: S7: If he likes it, the rest of his order are produced
+Similarity: 0.33
+
+Task: T6: Order safety features
+Best Match: S6: After producing the first saw you send it to your customer
+Similarity: 0.41
+
+Task: T7: Manual inspection of all parts
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.59
+
+Task: T8: Send update to customer: parts arrived
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.48
+
+Task: T9: Assemble parts
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.63
+
+Task: T10: Send update to customer: assembly in progress
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.44
+
+Task: T11: Send first saw to customer
+Best Match: S6: After producing the first saw you send it to your customer
+Similarity: 0.67
+
+Task: T12: Get customer feedback
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.42
+
+Task: T13: Produce rest of order
+Best Match: S7: If he likes it, the rest of his order are produced
+Similarity: 0.43
+
+
+Matches nach Threshold 0.38:
+Task: T4, Best Match: S4, Similarity: 0.51
+Task: T6, Best Match: S6, Similarity: 0.41
+Task: T7, Best Match: S4, Similarity: 0.59
+Task: T8, Best Match: S5, Similarity: 0.48
+Task: T9, Best Match: S4, Similarity: 0.63
+Task: T10, Best Match: S5, Similarity: 0.44
+Task: T11, Best Match: S6, Similarity: 0.67
+Task: T12, Best Match: S5, Similarity: 0.42
+Task: T13, Best Match: S7, Similarity: 0.43
+
+Precision: 0.69, Recall: 0.57, F1-Score: 0.63, Average Similarity: 0.51

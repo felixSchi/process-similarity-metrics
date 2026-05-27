@@ -1,0 +1,298 @@
+Testlauf Claude
+
+Sentences:
+S1: You produce custom chainsaws on demand
+S2: Your chainsaws have at least 5 properties such as length of the "guide bar" (Schwertlaenge), chain width, electric or motor chainsaw
+S3: After your customer told you the properties, you can start ordering the parts from various online sources (in parallel)
+S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+S5: During production, you regularly send updates to your customer
+S6: After producing the first saw you send it to your customer
+S7: If he likes it, the rest of his order are produced
+
+Tasks:
+T1: Record customer specifications blade lenght, chain width, drive type, power, weight
+T2: Order guide bar
+T3: Order saw chain
+T4: Order engine or electric motor
+T5: Order housing
+T6: Order safety components
+T7: Check all parts manually
+T8: Send production update to customer
+T9: Assemble parts
+T10: Send production update to customer
+T11: Send first saw to customer
+T12: Collect customer feedback
+T13: Produce remaining order
+T14: Send production update to customer
+T15: Send remaining order to customer
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Running similarity analysis with method: levenshtein
+
+Similarity Matrix:
+        T1      T2      T3      T4      T5      T6      T7      T8      T9      T10     T11    T12      T13     T14     T15
+S1      0.23    0.21    0.29    0.17    0.21    0.24    0.19    0.29    0.14    0.29    0.21   0.33     0.40    0.29    0.17
+S2      0.30    0.12    0.11    0.21    0.08    0.12    0.13    0.18    0.10    0.17    0.12   0.13     0.12    0.17    0.15
+S3      0.27    0.11    0.12    0.16    0.11    0.15    0.17    0.20    0.11    0.20    0.15   0.14     0.17    0.20    0.19
+S4      0.24    0.14    0.12    0.21    0.12    0.18    0.18    0.22    0.16    0.21    0.17   0.15     0.16    0.22    0.18
+S5      0.23    0.18    0.17    0.27    0.17    0.21    0.18    0.50    0.15    0.48    0.30   0.17     0.24    0.48    0.36
+S6      0.26    0.18    0.19    0.29    0.18    0.24    0.19    0.42    0.15    0.40    0.40   0.18     0.27    0.40    0.34
+S7      0.26    0.19    0.15    0.22    0.15    0.19    0.24    0.22    0.15    0.20    0.26   0.24     0.20    0.20    0.26
+
+Matches:
+Task: T1: Record customer specifications blade lenght, chain width, drive type, power, weight
+Best Match: S2: Your chainsaws have at least 5 properties such as length of the "guide bar" (Schwertlaenge), chain width, electric or motor chainsaw
+Similarity: 0.30
+
+Task: T2: Order guide bar
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.21
+
+Task: T3: Order saw chain
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.29
+
+Task: T4: Order engine or electric motor
+Best Match: S6: After producing the first saw you send it to your customer
+Similarity: 0.29
+
+Task: T5: Order housing
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.21
+
+Task: T6: Order safety components
+Best Match: S6: After producing the first saw you send it to your customer
+Similarity: 0.24
+
+Task: T7: Check all parts manually
+Best Match: S7: If he likes it, the rest of his order are produced
+Similarity: 0.24
+
+Task: T8: Send production update to customer
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.50
+
+Task: T9: Assemble parts
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.16
+
+Task: T10: Send production update to customer
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.48
+
+Task: T11: Send first saw to customer
+Best Match: S6: After producing the first saw you send it to your customer
+Similarity: 0.40
+
+Task: T12: Collect customer feedback
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.33
+
+Task: T13: Produce remaining order
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.40
+
+Task: T14: Send production update to customer
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.48
+
+Task: T15: Send remaining order to customer
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.36
+
+
+Matches nach Threshold 0.15:
+Task: T1, Best Match: S2, Similarity: 0.30
+Task: T2, Best Match: S1, Similarity: 0.21
+Task: T3, Best Match: S1, Similarity: 0.29
+Task: T4, Best Match: S6, Similarity: 0.29
+Task: T5, Best Match: S1, Similarity: 0.21
+Task: T6, Best Match: S6, Similarity: 0.24
+Task: T7, Best Match: S7, Similarity: 0.24
+Task: T8, Best Match: S5, Similarity: 0.50
+Task: T9, Best Match: S4, Similarity: 0.16
+Task: T10, Best Match: S5, Similarity: 0.48
+Task: T11, Best Match: S6, Similarity: 0.40
+Task: T12, Best Match: S1, Similarity: 0.33
+Task: T13, Best Match: S1, Similarity: 0.40
+Task: T14, Best Match: S5, Similarity: 0.48
+Task: T15, Best Match: S5, Similarity: 0.36
+
+Precision: 1.00, Recall: 0.86, F1-Score: 0.92, Average Similarity: 0.33
+
+Running similarity analysis with method: tfidf
+
+Similarity Matrix:
+        T1      T2      T3      T4      T5      T6      T7      T8      T9      T10     T11    T12      T13     T14     T15
+S1      0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00   0.00     0.11    0.00    0.00
+S2      0.07    0.13    0.06    0.16    0.00    0.00    0.00    0.00    0.00    0.00    0.00   0.00     0.00    0.00    0.00
+S3      0.03    0.00    0.00    0.00    0.00    0.00    0.05    0.04    0.07    0.04    0.04   0.06     0.00    0.04    0.04
+S4      0.00    0.00    0.00    0.00    0.00    0.00    0.22    0.04    0.30    0.04    0.04   0.00     0.00    0.04    0.04
+S5      0.05    0.00    0.00    0.00    0.00    0.00    0.00    0.36    0.00    0.36    0.24   0.09     0.00    0.36    0.24
+S6      0.04    0.00    0.08    0.00    0.00    0.00    0.00    0.22    0.00    0.22    0.44   0.08     0.00    0.22    0.22
+S7      0.00    0.08    0.08    0.06    0.09    0.08    0.00    0.00    0.00    0.00    0.00   0.00     0.08    0.00    0.06
+
+Matches:
+Task: T1: Record customer specifications blade lenght, chain width, drive type, power, weight
+Best Match: S2: Your chainsaws have at least 5 properties such as length of the "guide bar" (Schwertlaenge), chain width, electric or motor chainsaw
+Similarity: 0.07
+
+Task: T2: Order guide bar
+Best Match: S2: Your chainsaws have at least 5 properties such as length of the "guide bar" (Schwertlaenge), chain width, electric or motor chainsaw
+Similarity: 0.13
+
+Task: T3: Order saw chain
+Best Match: S6: After producing the first saw you send it to your customer
+Similarity: 0.08
+
+Task: T4: Order engine or electric motor
+Best Match: S2: Your chainsaws have at least 5 properties such as length of the "guide bar" (Schwertlaenge), chain width, electric or motor chainsaw
+Similarity: 0.16
+
+Task: T5: Order housing
+Best Match: S7: If he likes it, the rest of his order are produced
+Similarity: 0.09
+
+Task: T6: Order safety components
+Best Match: S7: If he likes it, the rest of his order are produced
+Similarity: 0.08
+
+Task: T7: Check all parts manually
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.22
+
+Task: T8: Send production update to customer
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.36
+
+Task: T9: Assemble parts
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.30
+
+Task: T10: Send production update to customer
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.36
+
+Task: T11: Send first saw to customer
+Best Match: S6: After producing the first saw you send it to your customer
+Similarity: 0.44
+
+Task: T12: Collect customer feedback
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.09
+
+Task: T13: Produce remaining order
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.11
+
+Task: T14: Send production update to customer
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.36
+
+Task: T15: Send remaining order to customer
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.24
+
+
+Matches nach Threshold 0.09:
+Task: T2, Best Match: S2, Similarity: 0.13
+Task: T4, Best Match: S2, Similarity: 0.16
+Task: T5, Best Match: S7, Similarity: 0.09
+Task: T7, Best Match: S4, Similarity: 0.22
+Task: T8, Best Match: S5, Similarity: 0.36
+Task: T9, Best Match: S4, Similarity: 0.30
+Task: T10, Best Match: S5, Similarity: 0.36
+Task: T11, Best Match: S6, Similarity: 0.44
+Task: T13, Best Match: S1, Similarity: 0.11
+Task: T14, Best Match: S5, Similarity: 0.36
+Task: T15, Best Match: S5, Similarity: 0.24
+
+Precision: 0.73, Recall: 0.86, F1-Score: 0.79, Average Similarity: 0.25
+
+Running similarity analysis with method: embedding
+
+Similarity Matrix:
+        T1      T2      T3      T4      T5      T6      T7      T8      T9      T10     T11    T12      T13     T14     T15
+S1      0.39    0.21    0.57    0.26    0.12    0.25    0.22    0.15    0.33    0.15    0.42   0.20     0.16    0.17    0.07
+S2      0.46    0.26    0.50    0.30    0.06    0.15    0.15    -0.02   0.21    -0.03   0.27   0.06     0.07    0.01    0.02
+S3      0.32    0.30    0.35    0.27    0.31    0.33    0.39    0.19    0.43    0.18    0.31   0.21     0.26    0.19    0.24
+S4      0.19    0.21    0.34    0.35    0.32    0.36    0.54    0.18    0.63    0.18    0.27   0.13     0.29    0.19    0.16
+S5      0.10    0.15    0.17    0.11    0.28    0.29    0.18    0.59    0.14    0.57    0.33   0.43     0.22    0.57    0.37
+S6      0.27    0.22    0.52    0.25    0.24    0.41    0.24    0.36    0.32    0.34    0.67   0.33     0.35    0.33    0.34
+S7      0.13    0.28    0.30    0.24    0.22    0.30    0.33    0.19    0.29    0.13    0.22   0.21     0.38    0.19    0.18
+
+Matches:
+Task: T1: Record customer specifications blade lenght, chain width, drive type, power, weight
+Best Match: S2: Your chainsaws have at least 5 properties such as length of the "guide bar" (Schwertlaenge), chain width, electric or motor chainsaw
+Similarity: 0.46
+
+Task: T2: Order guide bar
+Best Match: S3: After your customer told you the properties, you can start ordering the parts from various online sources (in parallel)
+Similarity: 0.30
+
+Task: T3: Order saw chain
+Best Match: S1: You produce custom chainsaws on demand
+Similarity: 0.57
+
+Task: T4: Order engine or electric motor
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.35
+
+Task: T5: Order housing
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.32
+
+Task: T6: Order safety components
+Best Match: S6: After producing the first saw you send it to your customer
+Similarity: 0.41
+
+Task: T7: Check all parts manually
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.54
+
+Task: T8: Send production update to customer
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.59
+
+Task: T9: Assemble parts
+Best Match: S4: After the parts arrive you have to do a manual inspection of all parts, and then assemble the parts
+Similarity: 0.63
+
+Task: T10: Send production update to customer
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.57
+
+Task: T11: Send first saw to customer
+Best Match: S6: After producing the first saw you send it to your customer
+Similarity: 0.67
+
+Task: T12: Collect customer feedback
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.43
+
+Task: T13: Produce remaining order
+Best Match: S7: If he likes it, the rest of his order are produced
+Similarity: 0.38
+
+Task: T14: Send production update to customer
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.57
+
+Task: T15: Send remaining order to customer
+Best Match: S5: During production, you regularly send updates to your customer
+Similarity: 0.37
+
+
+Matches nach Threshold 0.38:
+Task: T1, Best Match: S2, Similarity: 0.46
+Task: T3, Best Match: S1, Similarity: 0.57
+Task: T6, Best Match: S6, Similarity: 0.41
+Task: T7, Best Match: S4, Similarity: 0.54
+Task: T8, Best Match: S5, Similarity: 0.59
+Task: T9, Best Match: S4, Similarity: 0.63
+Task: T10, Best Match: S5, Similarity: 0.57
+Task: T11, Best Match: S6, Similarity: 0.67
+Task: T12, Best Match: S5, Similarity: 0.43
+Task: T14, Best Match: S5, Similarity: 0.57
+
+Precision: 0.67, Recall: 0.71, F1-Score: 0.69, Average Similarity: 0.54
