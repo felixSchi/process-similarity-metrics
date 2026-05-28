@@ -72,7 +72,7 @@ def parse_node(node, depth=0):
 
             text += f"{indent}After the exclusive task is completed, the process continues.\n"
 
-    # For container/other nodes, recurse
+    # Rekursiv alle Kinderknoten analysieren
     else:
         for child in node:
             text += parse_node(child, depth)
@@ -87,7 +87,7 @@ def convert_model_to_text_deterministic(fpath):
     tree = ET.parse(fpath)
     root = tree.getroot()
 
-    # find inner description element that contains the runnable children
+    # Den Haupt-Workflow-Knoten finden (der Knoten, der die Prozessbeschreibung enthält, erkennbar an "call", "parallel" oder "choose" als erstes Kind)
     workflow_root = None
     for elem in root.iter():
         if _local_name(elem.tag) == 'description' and len(list(elem)) > 0:
@@ -106,7 +106,7 @@ def convert_model_to_text_deterministic(fpath):
 
     return "\n".join(parts)
 
-
+# Nur zum Testen
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Deterministischer M2T Generator (Visitor-Based)")
     parser.add_argument("-m", "--model", help="Path to a BPMN XML file. If omitted, all files in data/bpmn/ will be processed.")
@@ -116,7 +116,7 @@ if __name__ == "__main__":
     if args.model:
         files = [args.model]
     else:
-        # default: process all xml files in workspace data/bpmn
+        # Standardmäßig: Alle XML-Dateien im data/bpmn Verzeichnis finden
         base = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'bpmn'))
         if not os.path.isdir(base):
             print(f"Konnte data/bpmn Verzeichnis nicht finden: {base}")
@@ -136,7 +136,7 @@ if __name__ == "__main__":
 '''
 AI-Reflection:
 - Das Auslesen der XML-Struktur und Zurodnung der Elemente zu Tasks und Gateways wurde mithilfe des KI-Tools "Github Copilot" (Modell: Gemini 2.5 Pro) implementiert.
-- Konkret habe ich im Prompt dazu aufgefordert, mithilfe von argparse im xml nach "call", "parallel" und "choose" Elementen zu suchen und die entsprechenden labels und conditions als String zusammenzufügen.
+- Konkret habe ich im Prompt dazu aufgefordert, mithilfe von argparse im xml den Startknoten zu finden und dann nach "call", "parallel" und "choose" Elementen zu suchen und die entsprechenden labels und conditions als String zusammenzufügen.
 - Das KI-Tool hat daraufhin den korrekten Code generiert, um die XML-Struktur zu analysieren und als Textkonkatenation auszugeben.
 - Im Anschluss habe ich manuell die genauen "Templates" für die Prozessbeschreibung sowie den Einleitungs- und Endtext hinzugefügt und die Funktionalität anhand aller drei Modelle getestet.
 '''
