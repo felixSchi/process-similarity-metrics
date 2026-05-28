@@ -55,3 +55,29 @@ def print_similarity_matrix(matrix, sentences, tasks):
     for i, (sentence, row) in enumerate(zip(sentences, matrix), start=1):
         row_str = [f"S{i}"] + [f"{similarity:.2f}" for similarity in row]
         print("\t".join(row_str))
+
+
+# Similarity-Matrix für Tupel berechnen
+def calculate_tuple_similarity_matrix(original_tuples, generated_tuples):
+    # Similarity-Matrix berechnen
+    matrix = []
+    for orig in original_tuples:
+        row = []
+        for gen in generated_tuples:
+            # Ähnlichkeit der beiden Tupel berechnen, indem die Sätze zu einem String zusammengefügt und dann die Embedding-Similarity berechnet wird
+            similarity = embedding_similarity(" ".join(orig), " ".join(gen))
+            row.append(similarity)
+        matrix.append(row)
+    return matrix
+
+# Similarity-Matrix für Tupel printen
+def print_tuple_similarity_matrix(matrix, original_tuples, generated_tuples):
+    # Header der Tabelle mit generierten Satz-Tupeln
+    header = [""] + [f"G{j+1}-{j+2}" for j in range(len(generated_tuples))]
+    print("\t".join(header))
+    
+    for i, _ in enumerate(original_tuples, start=1):
+        # Zeilen der Tabelle mit Tupel-Bezeichnungen und Similarity-Werten auf zwei Nachkommastellen gerundet
+        # Da durch die Tupel insgesamt eine Spalte weniger vorhanden ist, wird im Gegensatz zur Matrix für einfache Sätze über i-1 iteriert
+        row_str = [f"O{i}-{i+1}"] + [f"{similarity:.2f}" for similarity in matrix[i-1]]
+        print("\t".join(row_str))

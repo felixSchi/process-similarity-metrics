@@ -29,6 +29,7 @@ def parse_node(node, depth=0):
         text += f"{indent}Then, the task {label} is executed.\n"
 
     # Parallele Tasks
+    # Da in den odellen nur eine Ebene von Parallelität vorkommt, werden einfach alle parallelen Tasks gesammelt ausgegeben
     elif tag == "parallel":
         text += f"{indent}Then, the following tasks are executed in parallel"
         parallel_branches = [child for child in node if _local_name(child.tag) == "parallel_branch"]
@@ -40,7 +41,7 @@ def parse_node(node, depth=0):
                     text += f", {indent}{label}"
         text += f"{indent}.\nAfter all parallel tasks are completed, the process continues.\n"
 
-    # XOR / exclusive gateways
+    # XOR Gateways
     elif tag in ("choose"):
         if tag == 'choose':
             text += f"{indent}Then, a decision takes place.\n"
@@ -48,12 +49,13 @@ def parse_node(node, depth=0):
             for alt in alternatives:
                     condition = alt.attrib.get('condition', '').strip()
 
-                    # gather call labels in order
+                    # Alle "Call"-Tasks innerhalb der Alternative sammeln (es gibt in den Modellen nur eine Ebene von Alternativen, daher wird nicht rekursiv gesucht)
                     labels = []
                     for c in alt:
                         if _local_name(c.tag) == 'call':
                             labels.append(_find_label(c))
 
+                    # Basierend auf der Anzahl der Tasks in der Alternative die Formulierung anpassen
                     if len(labels) == 0:
                         text += f"{indent}If {condition}, nothing happens.\n"
                     elif len(labels) == 1:
@@ -78,7 +80,7 @@ def parse_node(node, depth=0):
     return text
 
 
-def convert_model_to_text(fpath):
+def convert_model_to_text_deterministic(fpath):
     if not os.path.isfile(fpath):
         raise FileNotFoundError(f"Model file not found: {fpath}")
 
@@ -98,7 +100,6 @@ def convert_model_to_text(fpath):
         raise ValueError(f"No valid workflow description found in: {fpath}")
 
     parts = []
-    parts.append(f"--- {os.path.basename(fpath)} ---")
     parts.append("The process starts.")
     parts.append(parse_node(workflow_root))
     parts.append("After that, the process ends.")
@@ -126,8 +127,16 @@ if __name__ == "__main__":
 
     for fpath in files:
         try:
-            out = convert_model_to_text(fpath)
+            out = convert_model_to_text_deterministic(fpath)
             print(out)
         except Exception as e:
             print(f"Fehler beim Verarbeiten '{fpath}': {e}")
             continue
+
+'''
+AI-Reflection:
+- Das Auslesen der XML-Struktur und Zurodnung der Elemente zu Tasks und Gateways wurde mithilfe des KI-Tools "Github Copilot" (Modell: Gemini 2.5 Pro) implementiert.
+- Konkret habe ich im Prompt dazu aufgefordert, mithilfe von argparse im xml nach "call", "parallel" und "choose" Elementen zu suchen und die entsprechenden labels und conditions als String zusammenzufügen.
+- Das KI-Tool hat daraufhin den korrekten Code generiert, um die XML-Struktur zu analysieren und als Textkonkatenation auszugeben.
+- Im Anschluss habe ich manuell die genauen "Templates" für die Prozessbeschreibung sowie den Einleitungs- und Endtext hinzugefügt und die Funktionalität anhand aller drei Modelle getestet.
+'''

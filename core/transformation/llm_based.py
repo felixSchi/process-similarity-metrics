@@ -6,7 +6,7 @@ import os
 API_KEY = "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"
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
-def groq_convert_from_file(filepath):
+def convert_model_to_text_llm(filepath):
     # Datei einlesen und Mermaid-Flowchart extrahieren, bzw. Fehlermldung bei falschem Pfad ausgeben
     if not os.path.isfile(filepath):
         print(f"Fehler: Datei nicht gefunden - {filepath}")
@@ -72,3 +72,12 @@ def groq_convert_from_file(filepath):
     except Exception as e:
         # Fehlerausgabe
         print(f"Unerwarteter Fehler: {e}")
+
+
+'''
+AI-Reflection:
+- Das Erstellen, Kodieren, Senden und Auslesen der Antwort der Groq-API wurde mithilfe des KI-Tools "Github Copilot" (Modell: Gemini 2.5 Pro) implementiert.
+- Konkret habe ich im Prompt dazu aufgefordert, die Anfrage an die URL und das Auslesen der Antwort mithilfe des API-Keys zu implementieren. Das KI-Tool hat daraufhin den korrekten Code generiert, um die Anfrage zu senden und die Antwort zu lesen.
+- Im Anschluss habe ich den generierten Code auf die Funktionstüchtigkeit überprüft, indem ich die Funktion mit dem Claude-Modell getestet habe, um sicherzustellen, dass die Anfrage korrekt gesendet wird und die Antwort wie erwartet zurückkommt. Dabei wurden (ebenfalls mithilfe von Copilot) kleinere Anpassungen vorgenommen, um die Funktionalität zu gewährleisten (z.B. Hinzufügen von User-Agent, um 403-Fehler zu vermeiden).
+- Zuletzt wurde die Fehlerbehandlung manuell vereinfacht
+'''
