@@ -106,7 +106,7 @@ if __name__ == "__main__":
     from core.metrics import calculate_metrics
 
     dimensions = ["sentence", "tuple"] # Dimension für die Ähnlichkeitsanalyse (satzweise oder tupelweise)
-    thresholds = [0.00, 0.00]  # jeweiliger Threshold für jede Dimension
+    thresholds = [0.52, 0.52]  # jeweiliger Threshold für jede Dimension
 
     print("\nDeterministic Transformation:")
     for dimension, threshold in zip(dimensions, thresholds):

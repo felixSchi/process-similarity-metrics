@@ -77,7 +77,7 @@ def convert_model_to_text_llm(filepath):
 '''
 AI-Reflection:
 - Das Erstellen, Kodieren, Senden und Auslesen der Antwort der Groq-API wurde mithilfe des KI-Tools "Github Copilot" (Modell: Gemini 2.5 Pro) implementiert.
-- Konkret habe ich im Prompt dazu aufgefordert, die Anfrage an die URL und das Auslesen der Antwort mithilfe des API-Keys zu implementieren. Das KI-Tool hat daraufhin den korrekten Code generiert, um die Anfrage zu senden und die Antwort zu lesen.
+- Konkret habe ich im Prompt dazu aufgefordert, die Anfrage an die URL und das Auslesen der Antwort mithilfe des API-Keys unter Verwendung der Temperature von 0.3 zu implementieren. Das KI-Tool hat daraufhin den korrekten Code generiert, um die Anfrage zu senden und die Antwort zu lesen.
 - Im Anschluss habe ich den generierten Code auf die Funktionstüchtigkeit überprüft, indem ich die Funktion mit dem Claude-Modell getestet habe, um sicherzustellen, dass die Anfrage korrekt gesendet wird und die Antwort wie erwartet zurückkommt. Dabei wurden (ebenfalls mithilfe von Copilot) kleinere Anpassungen vorgenommen, um die Funktionalität zu gewährleisten (z.B. Hinzufügen von User-Agent, um 403-Fehler zu vermeiden).
 - Zuletzt wurde die Fehlerbehandlung manuell vereinfacht
 '''

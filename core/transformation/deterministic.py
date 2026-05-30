@@ -1,6 +1,4 @@
 import xml.etree.ElementTree as ET
-import argparse
-import sys
 import os
 
 
@@ -106,32 +104,7 @@ def convert_model_to_text_deterministic(fpath):
 
     return "\n".join(parts)
 
-# Nur zum Testen
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Deterministischer M2T Generator (Visitor-Based)")
-    parser.add_argument("-m", "--model", help="Path to a BPMN XML file. If omitted, all files in data/bpmn/ will be processed.")
-    args = parser.parse_args()
 
-    files = []
-    if args.model:
-        files = [args.model]
-    else:
-        # Standardmäßig: Alle XML-Dateien im data/bpmn Verzeichnis finden
-        base = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'bpmn'))
-        if not os.path.isdir(base):
-            print(f"Konnte data/bpmn Verzeichnis nicht finden: {base}")
-            sys.exit(1)
-        for fn in os.listdir(base):
-            if fn.lower().endswith('.xml'):
-                files.append(os.path.join(base, fn))
-
-    for fpath in files:
-        try:
-            out = convert_model_to_text_deterministic(fpath)
-            print(out)
-        except Exception as e:
-            print(f"Fehler beim Verarbeiten '{fpath}': {e}")
-            continue
 
 '''
 AI-Reflection:
